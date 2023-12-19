@@ -1,15 +1,3 @@
-// import "./App.css";
-
-// function App() {
-//   return (
-//     <>
-//       <h1>Hello ji</h1>
-//     </>
-//   );
-// }
-
-// export default App;
-
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import "./App.css";

@@ -1,7 +1,7 @@
-import React, { userId } from "react";
+import React, { useId } from "react";
 
 function Select({ options, label, className, ...props }, ref) {
-  const id = userId();
+  const id = useId();
   return (
     <div className="w-full">
       {label && <label htmlFor={id} className=""></label>}
@@ -13,7 +13,7 @@ function Select({ options, label, className, ...props }, ref) {
       >
         {options?.map((option) => (
           <option key={option} value={option}>
-            {options}
+            {option}
           </option>
         ))}
       </select>
