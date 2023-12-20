@@ -72,6 +72,10 @@ const router = createBrowserRouter([
         path: "/post/:slug",
         element: <Post />,
       },
+      {
+        path: "/logout",
+        element: <Login />,
+      },
     ],
   },
 ]);
