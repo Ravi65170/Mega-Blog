@@ -9,6 +9,7 @@ export default function Post() {
   const [post, setPost] = useState(null);
   const { slug } = useParams();
   const navigate = useNavigate();
+  console.log("Navisss", navigate);
 
   const userData = useSelector((state) => state.auth.userData);
 
@@ -56,9 +57,9 @@ export default function Post() {
           )}
         </div>
         <div className="w-full mb-6">
-          <h1 className="text-2xl font-bold">{post.title}</h1>
+          <h1 className="text-2xl font-bold text-white">{post.title}</h1>
         </div>
-        <div className="browser-css">{parse(post.content)}</div>
+        <div className="browser-css text-white">{parse(post.content)}</div>
       </Container>
     </div>
   ) : null;

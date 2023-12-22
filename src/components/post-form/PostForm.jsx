@@ -82,14 +82,20 @@ export default function PostForm({ post }) {
   return (
     <form onSubmit={handleSubmit(submit)} className="flex flex-wrap">
       <div className="w-2/3 px-2">
+        <div className="flex mb-1 pl-2">
+          <label className="text-white  ">Title :</label>
+        </div>
         <Input
-          label="Title :"
+          // label="Title :"
           placeholder="Title"
-          className="mb-4"
+          className="mb-4 "
           {...register("title", { required: true })}
         />
+        <div className="flex mb-1 pl-2">
+          <label className="text-white  ">Slug :</label>
+        </div>
         <Input
-          label="Slug :"
+          // label="Slug :"
           placeholder="Slug"
           className="mb-4"
           {...register("slug", { required: true })}
@@ -99,16 +105,22 @@ export default function PostForm({ post }) {
             });
           }}
         />
+        <div className="flex mb-1 pl-2">
+          <label className="text-white ">Contant :</label>
+        </div>
         <RTE
-          label="Content :"
+          // label="Content :"
           name="content"
           control={control}
           defaultValue={getValues("content")}
         />
       </div>
-      <div className="w-1/3 px-2">
+      <div className="w-1/3 px-2 ">
+        <div className="flex mb-1 pl-2 ">
+          <label className="text-white ">Featured-Image :</label>
+        </div>
         <Input
-          label="Featured Image :"
+          // label="Featured Image :"
           type="file"
           className="mb-4"
           accept="image/png, image/jpg, image/jpeg, image/gif"

@@ -45,6 +45,11 @@ function Header() {
               <Logo />
             </Link>
           </div>
+          <div className="text-white font-bold mt-2">
+            <Link to="/">
+              <h1>Mega-Blog</h1>
+            </Link>
+          </div>
           <ul className="flex ml-auto">
             {navItems.map((item) =>
               item.active ? (

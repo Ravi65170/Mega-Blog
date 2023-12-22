@@ -1,143 +1,60 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import Logo from "../Logo";
+import { useMemo } from "react";
 
-function Footer() {
-  return (
-    <section className="relative overflow-hidden py-3 bg-slate-900 rounded-3xl border border-t-2 ">
-      <div className="relative z-10 mx-auto max-w-7xl px-5">
-        <div className="-m-6 flex flex-wrap">
-          <div className="w-full p-6 md:w-1/2 lg:w-5/12">
-            <div className="flex h-full flex-col justify-between">
-              <div className="mb-4 inline-flex items-center">
-                <Logo width="100px" />
-              </div>
-              <div>
-                <p className="text-lg text-white font-bold">
-                  &copy; Copyright 2023. All Rights Reserved by Ravi.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="w-full p-6 md:w-1/2 lg:w-2/12">
-            <div className="h-full">
-              <h3 className="tracking-px mb-9  text-sm  uppercase text-white font-bold">
-                Company
-              </h3>
-              <ul>
-                <li className="mb-4">
+const footerData = [
+  {
+    key: 1,
+    title: "Company",
+    links: ["Features", "Pricing", "Affiliate Program", "Press Kit"],
+  },
+  {
+    key: 2,
+    title: "Support",
+    links: ["Account", "Help", "Contact Us", "Customer Support"],
+  },
+  {
+    key: 3,
+    title: "Legals",
+    links: ["Terms & Conditions", "Privacy Policy", "Licensing"],
+  },
+];
+
+export default function Footer() {
+  const renderFotterData = useMemo(() => {
+    return footerData.map((item) => {
+      return (
+        <div className="" key={item.key}>
+          <div className="">
+            <h3 className="text-white font-bold text-lg">{item.title}</h3>
+            {item.links.map((link, i) => (
+              <ul key={i.toString()}>
+                <li className=" ">
                   <Link
-                    className=" text-base text-yellow-100 hover:text-rose-300"
+                    className="text-white hover:text-rose-400 pt-1 justify-between"
                     to="/"
                   >
-                    Features
-                  </Link>
-                </li>
-                <li className="mb-4">
-                  <Link
-                    className=" text-base font-medium  text-yellow-100 hover:text-rose-300"
-                    to="/"
-                  >
-                    Pricing
-                  </Link>
-                </li>
-                <li className="mb-4">
-                  <Link
-                    className=" text-base font-medium  text-yellow-100 hover:text-rose-300"
-                    to="/"
-                  >
-                    Affiliate Program
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    className=" text-base font-medium  text-yellow-100 hover:text-rose-300"
-                    to="/"
-                  >
-                    Press Kit
+                    {link}
                   </Link>
                 </li>
               </ul>
-            </div>
-          </div>
-          <div className="w-full p-6 md:w-1/2 lg:w-2/12">
-            <div className="h-full">
-              <h3 className="tracking-px mb-9  text-sm  uppercase text-white font-bold">
-                Support
-              </h3>
-              <ul>
-                <li className="mb-4">
-                  <Link
-                    className=" text-base font-medium text-yellow-100 hover:text-rose-300"
-                    to="/"
-                  >
-                    Account
-                  </Link>
-                </li>
-                <li className="mb-4">
-                  <Link
-                    className=" text-base font-medium text-yellow-100 hover:text-rose-300"
-                    to="/"
-                  >
-                    Help
-                  </Link>
-                </li>
-                <li className="mb-4">
-                  <Link
-                    className=" text-base font-medium text-yellow-100 hover:text-rose-300"
-                    to="/"
-                  >
-                    Contact Us
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    className=" text-base font-medium text-yellow-100 hover:text-rose-300"
-                    to="/"
-                  >
-                    Customer Support
-                  </Link>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div className="w-full p-6 md:w-1/2 lg:w-3/12">
-            <div className="h-full">
-              <h3 className="tracking-px mb-9  text-sm  uppercase text-white font-bold">
-                Legals
-              </h3>
-              <ul>
-                <li className="mb-4">
-                  <Link
-                    className=" text-base font-medium text-yellow-100 hover:text-rose-300"
-                    to="/"
-                  >
-                    Terms &amp; Conditions
-                  </Link>
-                </li>
-                <li className="mb-4">
-                  <Link
-                    className=" text-base font-medium text-yellow-100 hover:text-white"
-                    to="/"
-                  >
-                    Privacy Policy
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    className=" text-base font-medium text-yellow-100 hover:text-white"
-                    to="/"
-                  >
-                    Licensing
-                  </Link>
-                </li>
-              </ul>
-            </div>
+            ))}
           </div>
         </div>
+      );
+    });
+  }, []);
+  return (
+    <section className="py-4 bg-slate-900 rounded-3xl border border-t-2 ">
+      <div className="flex">
+        <div className="pl-5 w-2/12">
+          <Logo />
+        </div>
+        <div className="flex justify-between w-9/12  ">{renderFotterData}</div>
+      </div>
+      <div className="mt-5">
+        <p className="text-lg  text-white font-bold">&copy; Copyright 2023.</p>
       </div>
     </section>
   );
 }
-
-export default Footer;
