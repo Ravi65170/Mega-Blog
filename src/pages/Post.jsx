@@ -20,7 +20,7 @@ export default function Post() {
         if (post) setPost(post);
         else navigate("/");
       });
-    } else navigate("/");
+    } else navigate("/login");
   }, [slug, navigate]);
 
   const deletePost = () => {

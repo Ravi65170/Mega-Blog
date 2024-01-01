@@ -5,39 +5,33 @@ import { login } from "../store/authSlice";
 import { Button, Input, Logo } from "./index.js";
 import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
-import { ClipLoader } from "react-spinners";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Signup() {
   const navigate = useNavigate();
   const [error, setError] = useState("");
   const dispatch = useDispatch();
   const { register, handleSubmit } = useForm();
-  const [loading, setLoading] = useState(false);
 
   const create = async (data) => {
     setError("");
-    setLoading(true);
-    setTimeout(async () => {
-      try {
-        const userData = await authService.createAccount(data);
-        if (userData) {
-          const userData = await authService.getCurrentUser();
-          if (userData) dispatch(login(userData));
-          navigate("/");
-        }
-      } catch (error) {
-        setError(error.message);
-      } finally {
-        setLoading(false);
+
+    try {
+      const userData = await authService.createAccount(data);
+      if (userData) {
+        const userData = await authService.getCurrentUser();
+        if (userData) dispatch(login(userData));
+        navigate("/");
       }
-    }, 100);
+      toast.success("Signup successful!");
+    } catch (error) {
+      setError(error.message);
+      toast.error(`Error: ${error.message}`);
+    }
   };
 
-  return loading ? (
-    <div className="mt-4 w-full">
-      <ClipLoader color={"white"} loading={true} size={100} />
-    </div>
-  ) : (
+  return (
     <div className="flex items-center justify-center">
       <div
         className={`mx-auto w-full max-w-lg bg-gray-100 rounded-xl p-10 border border-black/10`}

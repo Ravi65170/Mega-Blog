@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import appwriteService from "../appwrite/config";
 import { Container, PostCard } from "../components";
-import { ClipLoader } from "react-spinners";
+import { SkeletonLoader } from "../components/SkeletonLoader";
 
 function Home() {
   const [posts, setPosts] = useState([]);
@@ -21,14 +21,11 @@ function Home() {
     <div className="w-full py-8">
       {loading ? (
         <>
-          {" "}
-          <div className="mt-4 w-full">
-            <ClipLoader color={"white"} loading={true} size={100} />
-          </div>
+          <SkeletonLoader />
         </>
       ) : (
         <Container>
-          <div className="flex flex-wrap">
+          <div className="flex gap-4 justify-center">
             {posts.map((post) => (
               <div key={post.$id} className="p-2 w-1/4">
                 <PostCard {...post} />
