@@ -26,7 +26,7 @@ function AllPosts() {
       ) : (
         <div className="flex gap-4 justify-center">
           {posts.map((post) => (
-            <div key={post.$id} className="">
+            <div key={post.$id}>
               <PostCard {...post} />
             </div>
           ))}
