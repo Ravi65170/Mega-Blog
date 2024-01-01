@@ -18,13 +18,13 @@ function AllPosts() {
   }, []);
 
   return (
-    <div className="w-full py-8">
+    <div className="w-full py-8 ">
       {loading ? (
         <>
           <SkeletonLoader />
         </>
       ) : (
-        <div className="flex gap-4 justify-center">
+        <div className="flex gap-4 justify-center ">
           {posts.map((post) => (
             <div key={post.$id}>
               <PostCard {...post} />

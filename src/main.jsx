@@ -22,6 +22,10 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       {
+        path: "/",
+        element: <Home />,
+      },
+      {
         path: "/login",
         element: (
           <AuthLayout authentication={false}>
@@ -37,10 +41,7 @@ const router = createBrowserRouter([
           </AuthLayout>
         ),
       },
-      {
-        path: "/",
-        element: <Home />,
-      },
+
       {
         path: "/all-posts",
         element: (
